@@ -5,7 +5,7 @@ using UnityEngine;
 public class Rotor : MonoBehaviour
 {
     [SerializeField]
-    private float maxSpeed = 5000f;
+    private float maxSpeed = 150f;
 
     private float speed = 0f;
 
@@ -25,12 +25,12 @@ public class Rotor : MonoBehaviour
 
     public RotorState state = RotorState.TAKE_OFF;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (state == RotorState.TAKE_OFF)
         {
-            speed = Mathf.Lerp(speed, maxSpeed, accelerationCoeff * Time.deltaTime);
-            transform.Rotate(0, 0, speed * Time.deltaTime);
+            speed = Mathf.Lerp(speed, maxSpeed, accelerationCoeff * Time.fixedDeltaTime);
+            transform.Rotate(0, 0, speed);
 
             if (Mathf.Abs(maxSpeed - speed) < approximation)
             {
@@ -41,13 +41,13 @@ public class Rotor : MonoBehaviour
 
         if (state == RotorState.FLY)
         {
-            transform.Rotate(0, 0, maxSpeed * Time.deltaTime);
+            transform.Rotate(0, 0, maxSpeed);
         }
 
         if (state == RotorState.LAND)
         {
-            speed = Mathf.Lerp(speed, 0, accelerationCoeff * Time.deltaTime);
-            transform.Rotate(0, 0, speed * Time.deltaTime);
+            speed = Mathf.Lerp(speed, 0, accelerationCoeff * Time.fixedDeltaTime);
+            transform.Rotate(0, 0, speed);
 
             if (Mathf.Abs(speed - 0) < approximation)
             {

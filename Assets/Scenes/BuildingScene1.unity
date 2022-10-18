@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a43ce44ca7aa2b4cac2d2747e556036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 15
+  maxSpeed: 150
   approximation: 0.2
   accelerationCoeff: 1
   state: 0
@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a43ce44ca7aa2b4cac2d2747e556036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 15
+  maxSpeed: 150
   approximation: 0.2
   accelerationCoeff: 1
   state: 0
@@ -665,7 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a43ce44ca7aa2b4cac2d2747e556036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 15
+  maxSpeed: 150
   approximation: 0.2
   accelerationCoeff: 1
   state: 0
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a43ce44ca7aa2b4cac2d2747e556036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 15
+  maxSpeed: 150
   approximation: 0.2
   accelerationCoeff: 1
   state: 0
