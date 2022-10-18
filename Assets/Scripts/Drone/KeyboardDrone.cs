@@ -1,15 +1,22 @@
+/*
+** Author : Lucas BILLARD
+** Date Create : 17/10/2022
+** Description :
+*   Class for control the drone with Keyboard using DronePhysics class
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyboardDrone : MonoBehaviour
 {
-    private DroneController controller;
+    private DronePhysics controller;
 
     // Start is called before the first frame update
     private void Start()
     {
-        controller = GetComponent<DroneController>();
+        controller = GetComponent<DronePhysics>();
     }
 
     // Update is called once per frame
@@ -17,7 +24,6 @@ public class KeyboardDrone : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Z))
         {
-            Debug.Log("Z");
             controller.Pitch = Pitch.Forward;
         }
         else if (Input.GetKey(KeyCode.S))
@@ -53,6 +59,19 @@ public class KeyboardDrone : MonoBehaviour
         else
         {
             controller.Altitude = Altitude.None;
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            controller.Yaw = Yaw.Hours;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            controller.Yaw = Yaw.AntiHours;
+        }
+        else
+        {
+            controller.Yaw = Yaw.None;
         }
     }
 }
