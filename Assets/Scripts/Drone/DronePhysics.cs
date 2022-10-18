@@ -1,9 +1,19 @@
+/*
+** Author : Lucas BILLARD
+** Source : Mario Haberle - Drone Tutoria Unity3d C# - https://www.youtube.com/playlist?list=PLPAgqhxd1Ib1YYqYnZioGyrSUzOwead17
+** Date Create : 18/10/2022
+** Description :
+*   Class for simulate the physics of a drone using RelatveForce & Quaternion. It use axis Pitch, Roll, Yaw and Altitude to be accurate with a real drone
+*   All the force and angle of the class are modifiable to be nearest from the reallity
+*   This Script goal is to be use by controller's script, for autonomous or with device controller
+*/
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MarioDroneController : MonoBehaviour
+public class DronePhysics : MonoBehaviour
 {
     private Rigidbody rb;
 

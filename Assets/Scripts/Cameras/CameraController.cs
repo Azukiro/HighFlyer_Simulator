@@ -1,3 +1,11 @@
+/*
+** Author : Lucas BILLARD
+** Source : TheArtist - Forum Changing between cameras - https://answers.unity.com/questions/16146/changing-between-cameras.html
+** Date Create : 18/10/2022
+** Description :
+*   Class for switch between a list of cameras using keyboard C
+*/
+
 using UnityEngine;
 using System.Collections;
 

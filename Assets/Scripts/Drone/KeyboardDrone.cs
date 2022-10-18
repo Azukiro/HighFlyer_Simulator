@@ -1,15 +1,22 @@
+/*
+** Author : Lucas BILLARD
+** Date Create : 17/10/2022
+** Description :
+*   Class for control the drone with Keyboard using DronePhysics class
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyboardDrone : MonoBehaviour
 {
-    private MarioDroneController controller;
+    private DronePhysics controller;
 
     // Start is called before the first frame update
     private void Start()
     {
-        controller = GetComponent<MarioDroneController>();
+        controller = GetComponent<DronePhysics>();
     }
 
     // Update is called once per frame

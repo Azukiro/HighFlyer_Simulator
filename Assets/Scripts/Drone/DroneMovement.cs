@@ -1,3 +1,10 @@
+/*
+** Author : Lucas BILLARD
+** Date Create : 13/10/2022
+** Description :
+*   Class for move the drone in zigzag in front of a wall and stop when the top of the wall is reached
+*/
+
 using System;
 using System.Collections;
 using System.Collections.Generic;

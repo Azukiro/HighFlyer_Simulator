@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public enum Pitch
@@ -30,6 +29,7 @@ public enum Altitude
     Down
 }
 
+[Obsolete("Use class DronePhysics")]
 public class DroneController : MonoBehaviour
 {
     private Rigidbody rb;
