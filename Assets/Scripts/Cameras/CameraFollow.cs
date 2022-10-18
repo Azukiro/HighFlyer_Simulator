@@ -12,24 +12,23 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public float angle;
+    
+    public float smooth = 1f;
     public Vector3 behindPosition;
+
     private Vector3 velocityCamera;
     private Transform droneTransform;
-    private DronePhysics droneController;
 
     // Start is called before the first frame update
     private void Awake()
     {
-        droneController = GameObject.FindGameObjectWithTag("Player").GetComponent<DronePhysics>();
         droneTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     private void FixedUpdate()
-    {
-        int orientation = droneController.Pitch == Pitch.Forward ? 1 : droneController.Pitch == Pitch.Backward ? -1 : 0;
-        transform.position = Vector3.SmoothDamp(transform.position, droneTransform.transform.TransformPoint(behindPosition), ref velocityCamera, 0.1f);
-        transform.rotation = Quaternion.Euler(angle, droneTransform.localEulerAngles.y, 0);
+    { 
+        transform.position = Vector3.SmoothDamp(transform.position, droneTransform.transform.TransformPoint(behindPosition), ref velocityCamera, smooth * Time.fixedDeltaTime);
+        transform.LookAt(droneTransform);
     }
 }

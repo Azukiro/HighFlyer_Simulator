@@ -22,6 +22,8 @@ public class DronePhysics : MonoBehaviour
     public Yaw Yaw = Yaw.None;
     public Altitude Altitude = Altitude.None;
     private float gravity = 9.81f;
+    public float verticalPercentage;
+    public float horizontalPercentage;
 
     // Start is called before the first frame update
     private void Awake()

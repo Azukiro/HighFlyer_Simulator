@@ -8,16 +8,16 @@ public class FollowingCamera : MonoBehaviour
     public GameObject target;
 
     public int horizontalDistance = 10;
-    public int verticalDistance   = 2;
-    public float smooth           = 1f;
+    public int verticalDistance = 2;
+    public float smooth = 1f;
 
-    private void Update()
+    private void FixedUpdate()
     {
         float x = target.transform.position.x - target.transform.forward.x * horizontalDistance;
         float y = target.transform.position.y + verticalDistance;
         float z = target.transform.position.z - target.transform.forward.z * horizontalDistance;
         Vector3 posToReach = new Vector3(x, y, z);
-        transform.position = Vector3.Lerp(transform.position, posToReach, smooth * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, posToReach, smooth * Time.fixedDeltaTime);
         transform.LookAt(target.transform);
     }
 }

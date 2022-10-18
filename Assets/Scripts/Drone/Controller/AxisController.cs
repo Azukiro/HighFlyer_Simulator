@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyboardDrone : MonoBehaviour
+public class AxisController : MonoBehaviour
 {
     private DronePhysics controller;
 
@@ -22,11 +22,17 @@ public class KeyboardDrone : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Z))
+        var vertical = Input.GetAxis("Vertical");
+        var horizontal = Input.GetAxis("Horizontal");
+
+        var altitude = Input.GetAxis("Altitude");
+
+        var yaw = Input.GetAxis("Yaw");
+        if (vertical > 0)
         {
             controller.Pitch = Pitch.Forward;
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (vertical < 0)
         {
             controller.Pitch = Pitch.Backward;
         }
@@ -34,12 +40,13 @@ public class KeyboardDrone : MonoBehaviour
         {
             controller.Pitch = Pitch.None;
         }
+        controller.verticalPercentage = vertical;
 
-        if (Input.GetKey(KeyCode.Q))
+        if (horizontal < 0)
         {
             controller.Roll = Roll.Left;
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (horizontal > 0)
         {
             controller.Roll = Roll.Right;
         }
@@ -47,12 +54,13 @@ public class KeyboardDrone : MonoBehaviour
         {
             controller.Roll = Roll.None;
         }
+        controller.verticalPercentage = horizontal;
 
-        if (Input.GetKey(KeyCode.Space))
+        if (altitude > 0)
         {
             controller.Altitude = Altitude.Up;
         }
-        else if (Input.GetKey(KeyCode.LeftShift))
+        else if (altitude < 0)
         {
             controller.Altitude = Altitude.Down;
         }
@@ -61,11 +69,11 @@ public class KeyboardDrone : MonoBehaviour
             controller.Altitude = Altitude.None;
         }
 
-        if (Input.GetKey(KeyCode.E))
+        if (yaw > 0)
         {
             controller.Yaw = Yaw.Hours;
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (yaw < 0)
         {
             controller.Yaw = Yaw.AntiHours;
         }
