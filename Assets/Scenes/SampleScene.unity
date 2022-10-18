@@ -490,7 +490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 665423900}
   m_Layer: 0
-  m_Name: Example Assets
+  m_Name: Environnement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -527,7 +527,6 @@ GameObject:
   - component: {fileID: 761342534}
   - component: {fileID: 761342533}
   - component: {fileID: 761342535}
-  - component: {fileID: 761342536}
   - component: {fileID: 761342537}
   m_Layer: 2
   m_Name: Drone
@@ -595,21 +594,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0667046567a2fa845a4c9df6ff8a7a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.3
-  angle: 7
+  speed: 7
+  angle: 15
   direction: 8
---- !u!114 &761342536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761342531}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f011c5bd74a20e499e4f285a4cd5aba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  Pitch: 0
+  Roll: 0
+  Yaw: 0
+  Altitude: 0
 --- !u!114 &761342537
 MonoBehaviour:
   m_ObjectHideFlags: 0

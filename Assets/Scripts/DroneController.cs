@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum Direction
 {
     Forward,
@@ -37,6 +36,13 @@ public enum Yaw
     AntiHours
 }
 
+public enum Altitude
+{
+    None,
+    Up,
+    Down
+}
+
 public class DroneController : MonoBehaviour
 {
     private Rigidbody rb;
@@ -45,10 +51,15 @@ public class DroneController : MonoBehaviour
 
     [SerializeField]
     private float speed = 1.3f, angle = 25;
+
     private bool isOnGround = false;
 
     public Direction direction = Direction.None;
-    public bool? goUp;
+    public Pitch Pitch = Pitch.None;
+    public Roll Roll = Roll.None;
+    public Yaw Yaw = Yaw.None;
+    public Altitude Altitude = Altitude.None;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -63,18 +74,19 @@ public class DroneController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddRelativeForce(right_left_axis, up_down_axis, forward_backward_axis);
+        rb.velocity = new Vector3(right_left_axis, up_down_axis, forward_backward_axis);
+        //rb.AddRelativeForce(right_left_axis, up_down_axis, forward_backward_axis);
     }
 
     // Update is called once per frame
     private void Controlls()
     {
-        if (goUp == true)
+        if (Altitude == Altitude.Up)
         {
             up_down_axis = 1 * speed;
             isOnGround = false;
         }
-        else if (goUp == false)
+        else if (Altitude == Altitude.Down)
         {
             up_down_axis = -1 * speed;
         }
@@ -83,12 +95,13 @@ public class DroneController : MonoBehaviour
             up_down_axis = 0.01f;
         }
 
-        if (direction == Direction.Forward)
+        if (Pitch == Pitch.Forward)
         {
+            Debug.Log("Forward");
             forward_backward_angle = Mathf.Lerp(forward_backward_angle, angle, Time.deltaTime);
             forward_backward_axis = speed;
         }
-        else if (direction == Direction.Backward)
+        else if (Pitch == Pitch.Backward)
         {
             forward_backward_angle = Mathf.Lerp(forward_backward_angle, -angle, Time.deltaTime);
             forward_backward_axis = -speed;
@@ -99,12 +112,12 @@ public class DroneController : MonoBehaviour
             forward_backward_axis = 0;
         }
 
-        if (direction == Direction.Right)
+        if (Roll == Roll.Right)
         {
             right_left_angle = Mathf.Lerp(right_left_angle, angle, Time.deltaTime);
             right_left_axis = speed;
         }
-        else if (direction == Direction.Left)
+        else if (Roll == Roll.Left)
         {
             right_left_angle = Mathf.Lerp(right_left_angle, -angle, Time.deltaTime);
             right_left_axis = -speed;
@@ -115,28 +128,28 @@ public class DroneController : MonoBehaviour
             right_left_axis = 0;
         }
 
-        if (direction == Direction.ForwardRight)
+        if (Pitch == Pitch.Forward && Roll == Roll.Right)
         {
             forward_backward_angle = Mathf.Lerp(forward_backward_angle, angle, Time.deltaTime);
             right_left_angle = Mathf.Lerp(right_left_angle, angle, Time.deltaTime);
             forward_backward_axis = 0.5f * speed;
             right_left_axis = 0.5f * speed;
         }
-        else if (direction == Direction.ForwardLeft)
+        else if (Pitch == Pitch.Forward && Roll == Roll.Left)
         {
             forward_backward_angle = Mathf.Lerp(forward_backward_angle, angle, Time.deltaTime);
             right_left_angle = Mathf.Lerp(right_left_angle, -angle, Time.deltaTime);
             forward_backward_axis = 0.5f * speed;
             right_left_axis = 0.5f * -speed;
         }
-        else if (direction == Direction.BackwardRight)
+        else if (Pitch == Pitch.Backward && Roll == Roll.Right)
         {
             forward_backward_angle = Mathf.Lerp(forward_backward_angle, -angle, Time.deltaTime);
             right_left_angle = Mathf.Lerp(right_left_angle, angle, Time.deltaTime);
             forward_backward_axis = 0.5f * -speed;
             right_left_axis = 0.5f * speed;
         }
-        else if (direction == Direction.BackwardLeft)
+        else if (Pitch == Pitch.Backward && Roll == Roll.Left)
         {
             forward_backward_angle = Mathf.Lerp(forward_backward_angle, -angle, Time.deltaTime);
             right_left_angle = Mathf.Lerp(right_left_angle, -angle, Time.deltaTime);
