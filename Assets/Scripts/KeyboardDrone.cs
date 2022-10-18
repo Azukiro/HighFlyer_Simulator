@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class KeyboardDrone : MonoBehaviour
 {
-    private DroneController controller;
+    private MarioDroneController controller;
 
     // Start is called before the first frame update
     private void Start()
     {
-        controller = GetComponent<DroneController>();
+        controller = GetComponent<MarioDroneController>();
     }
 
     // Update is called once per frame
@@ -17,7 +17,6 @@ public class KeyboardDrone : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Z))
         {
-            Debug.Log("Z");
             controller.Pitch = Pitch.Forward;
         }
         else if (Input.GetKey(KeyCode.S))
@@ -53,6 +52,19 @@ public class KeyboardDrone : MonoBehaviour
         else
         {
             controller.Altitude = Altitude.None;
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            controller.Yaw = Yaw.Hours;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            controller.Yaw = Yaw.AntiHours;
+        }
+        else
+        {
+            controller.Yaw = Yaw.None;
         }
     }
 }

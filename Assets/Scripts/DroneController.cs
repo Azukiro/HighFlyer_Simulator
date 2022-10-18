@@ -2,19 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Direction
-{
-    Forward,
-    Backward,
-    Left,
-    Right,
-    ForwardLeft,
-    ForwardRight,
-    BackwardLeft,
-    BackwardRight,
-    None
-}
-
 public enum Pitch
 {
     None,
@@ -54,7 +41,6 @@ public class DroneController : MonoBehaviour
 
     private bool isOnGround = false;
 
-    public Direction direction = Direction.None;
     public Pitch Pitch = Pitch.None;
     public Roll Roll = Roll.None;
     public Yaw Yaw = Yaw.None;
@@ -74,8 +60,8 @@ public class DroneController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector3(right_left_axis, up_down_axis, forward_backward_axis);
-        //rb.AddRelativeForce(right_left_axis, up_down_axis, forward_backward_axis);
+        //rb.velocity = new Vector3(right_left_axis, up_down_axis, forward_backward_axis);
+        rb.AddRelativeForce(right_left_axis, up_down_axis, forward_backward_axis);
     }
 
     // Update is called once per frame
@@ -97,7 +83,6 @@ public class DroneController : MonoBehaviour
 
         if (Pitch == Pitch.Forward)
         {
-            Debug.Log("Forward");
             forward_backward_angle = Mathf.Lerp(forward_backward_angle, angle, Time.deltaTime);
             forward_backward_axis = speed;
         }
