@@ -5,23 +5,26 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject drone;
+    private GameObject drone;
 
     [SerializeField]
-    Vector3 spawnOffset = new Vector3(0, 1, 10);
+    private Vector3 spawnOffset = new Vector3(0, 1, 10);
 
     [SerializeField]
-    GameObject buildingsContainer;
+    private Vector3 buildingScaling = new Vector3(2, 2, 2);
 
     [SerializeField]
-    List<GameObject> buildingsPrefabs = new List<GameObject>();
+    private GameObject buildingsContainer;
 
     [SerializeField]
-    int distanceBetweenBuildings = 30;
+    private List<GameObject> buildingsPrefabs = new List<GameObject>();
 
-    List<GameObject> buildings = new List<GameObject>();
+    [SerializeField]
+    private int distanceBetweenBuildings = 30;
 
-    int currentBuildingId = 0;
+    private List<GameObject> buildings = new List<GameObject>();
+
+    private int currentBuildingId = 0;
 
     // Singleton pattern
     public static GameManager Instance { get; private set; }
@@ -33,6 +36,7 @@ public class GameManager : MonoBehaviour
         else
             Instance = this;
     }
+
     private void Start()
     {
         int x = 0;
@@ -40,6 +44,7 @@ public class GameManager : MonoBehaviour
         {
             GameObject generatedObject = Instantiate(buildingPrefab, new Vector3(x, 0, 0), Quaternion.identity);
             generatedObject.transform.parent = buildingsContainer.transform;
+            generatedObject.transform.localScale = buildingScaling;
             buildings.Add(generatedObject);
             x += distanceBetweenBuildings;
         }
@@ -56,5 +61,4 @@ public class GameManager : MonoBehaviour
         Debug.Log("Launch drone...");
         drone.transform.position = buildings[currentBuildingId].transform.position + spawnOffset;
     }
-
 }
