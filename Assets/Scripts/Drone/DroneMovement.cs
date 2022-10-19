@@ -117,6 +117,7 @@ public class DroneMovement : MonoBehaviour
     {
         if (vertical == 0)
         {
+            Debug.Log(vertical);
             Vector3 newVelocity = (transform.right * horizontal) * speed * Time.fixedDeltaTime;
             if (distance > distanceOptimale + 0.2 || distance < distanceOptimale - 0.2)
             {
