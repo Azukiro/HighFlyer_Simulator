@@ -143,7 +143,6 @@ MonoBehaviour:
   maxSpeed: 150
   approximation: 0.2
   accelerationCoeff: 1
-  state: 0
 --- !u!1 &228690820
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &794810626
 Transform:
   m_ObjectHideFlags: 0
@@ -648,7 +647,6 @@ MonoBehaviour:
   maxSpeed: 150
   approximation: 0.2
   accelerationCoeff: 1
-  state: 0
 --- !u!1 &1216109240 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100004, guid: f385ef9bb7a1546f993e78d992be5dbe, type: 3}
@@ -669,7 +667,6 @@ MonoBehaviour:
   maxSpeed: 150
   approximation: 0.2
   accelerationCoeff: 1
-  state: 0
 --- !u!1 &1541072053 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100010, guid: f385ef9bb7a1546f993e78d992be5dbe, type: 3}
@@ -690,7 +687,6 @@ MonoBehaviour:
   maxSpeed: 150
   approximation: 0.2
   accelerationCoeff: 1
-  state: 0
 --- !u!1 &1638937238
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,6 +880,9 @@ MonoBehaviour:
   Altitude: 0
   verticalPercentage: 0
   horizontalPercentage: 0
+  IsGrounded: 0
+  takeOffTime: 1
+  state: 0
   upForce: 0
   forwardSpeed: 50
   forwardAngle: 20
@@ -901,8 +900,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.8817556, y: 0.6632705, z: 2.4326386}
-  m_Center: {x: -0.013038665, y: 0.16836502, z: 0.12085989}
+  m_Size: {x: 2.8817556, y: 0.38940197, z: 2.4326386}
+  m_Center: {x: -0.013038635, y: 0.1146203, z: 0.12085986}
 --- !u!54 &1762892415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -927,7 +926,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762892411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

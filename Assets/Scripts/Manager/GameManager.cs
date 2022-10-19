@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
         if (!(0 <= currentBuildingId && currentBuildingId < buildings.Count))
             return;
 
-        Debug.Log("Launch drone...");
         drone.transform.position = buildings[currentBuildingId].transform.position + spawnOffset;
     }
 }

@@ -5,27 +5,53 @@
 *   Class for control the drone with Keyboard using DronePhysics class
 */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AxisController : MonoBehaviour
 {
-    private DronePhysics controller;
+    DronePhysics controller;
 
-    // Start is called before the first frame update
     private void Start()
     {
         controller = GetComponent<DronePhysics>();
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        var vertical = Input.GetAxis("Vertical");
-        var horizontal = Input.GetAxis("Horizontal");
+        bool arm, takeOff, land, desarm;
+        arm     = Input.GetButtonDown("Arm");
+        takeOff = Input.GetButtonDown("Take off");
+        land    = Input.GetButtonDown("Land");
+        desarm  = Input.GetButtonDown("Desarm");
 
-        var altitude = Input.GetAxis("Altitude");
+        switch (controller.state)
+        {
+            case (DroneState.OFF):
+                if (arm)
+                    controller.Arm();
+                break;
+            case (DroneState.WAITING_FLY_INSTRUCTIONS_ON_GROUND):
+                if (takeOff)
+                    controller.TakeOff();
+                if (desarm)
+                    controller.Desarm();
+                break;
+            case (DroneState.FLYING):
+                if (land)
+                    controller.Land();
+                else
+                    ControlDroneFlight();
+                break;
+        }
+    }
+
+    private void ControlDroneFlight()
+    {
+        float vertical, horizontal, altitude;
+
+        vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+        altitude = Input.GetAxis("Altitude");
 
         var yaw = Input.GetAxis("Yaw");
         if (vertical > 0)
