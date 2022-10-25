@@ -847,6 +847,7 @@ GameObject:
   - component: {fileID: 1762892412}
   - component: {fileID: 1762892417}
   - component: {fileID: 1762892418}
+  - component: {fileID: 1762892419}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Player
@@ -878,6 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b25d675892d7f641a4ba284186c1dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   Pitch: 0
   Roll: 0
   Yaw: 0
@@ -899,7 +901,7 @@ BoxCollider:
   m_GameObject: {fileID: 1762892411}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2.8817556, y: 0.6632705, z: 2.4326386}
   m_Center: {x: -0.013038665, y: 0.16836502, z: 0.12085989}
@@ -927,7 +929,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762892411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -11.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -963,6 +965,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b12e2b96bb91e84fae3534b7c59314d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1762892419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762892411}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5165cbf7ee1317d4cac12afea34bfbba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AltitudeToReach: 10
+  ForwardToReach: 0
+  LeftToReach: 0
+  appro: 2
 --- !u!4 &1801126363 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9222646655905963934, guid: 8ab81c06e7abe35478de83ea3e212e0e, type: 3}

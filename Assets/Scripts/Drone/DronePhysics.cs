@@ -15,7 +15,7 @@ using UnityEngine;
 
 public class DronePhysics : MonoBehaviour
 {
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     public Pitch Pitch = Pitch.None;
     public Roll Roll = Roll.None;
@@ -73,7 +73,7 @@ public class DronePhysics : MonoBehaviour
 
         if (Roll != Roll.None && Pitch == Pitch.None)
         {
-            upForce = gravity * 2;
+            upForce = gravity * 5;
         }
         if (Altitude == Altitude.Up)
         {
