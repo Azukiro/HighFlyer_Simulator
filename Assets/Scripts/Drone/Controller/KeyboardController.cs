@@ -5,10 +5,11 @@
 *   Class for control the drone with Keyboard using DronePhysics class
 */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[Obsolete]
 public class KeyboardController : MonoBehaviour
 {
     private DronePhysics controller;

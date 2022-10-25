@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Rotor : MonoBehaviour
 {
@@ -17,17 +15,17 @@ public class Rotor : MonoBehaviour
 
     public enum RotorState
     {
-        TAKE_OFF,
-        FLY,
-        LAND,
+        ARMING,
+        READY,
+        DISARMING,
         OFF
     }
 
-    public RotorState state = RotorState.TAKE_OFF;
+    public RotorState state { get; private set; } = RotorState.OFF;
 
     private void FixedUpdate()
     {
-        if (state == RotorState.TAKE_OFF)
+        if (state == RotorState.ARMING)
         {
             speed = Mathf.Lerp(speed, maxSpeed, accelerationCoeff * Time.fixedDeltaTime);
             transform.Rotate(0, 0, speed);
@@ -35,16 +33,16 @@ public class Rotor : MonoBehaviour
             if (Mathf.Abs(maxSpeed - speed) < approximation)
             {
                 speed = maxSpeed;
-                state = RotorState.FLY;
+                state = RotorState.READY;
             }
         }
 
-        if (state == RotorState.FLY)
+        if (state == RotorState.READY)
         {
             transform.Rotate(0, 0, maxSpeed);
         }
 
-        if (state == RotorState.LAND)
+        if (state == RotorState.DISARMING)
         {
             speed = Mathf.Lerp(speed, 0, accelerationCoeff * Time.fixedDeltaTime);
             transform.Rotate(0, 0, speed);
@@ -57,15 +55,15 @@ public class Rotor : MonoBehaviour
         }
     }
 
-    public void TakeOff()
+    public void Arm()
     {
         if (state == RotorState.OFF)
-            state = RotorState.TAKE_OFF;
+            state = RotorState.ARMING;
     }
 
-    public void Land()
+    public void Desarm()
     {
-        if (state == RotorState.FLY)
-            state = RotorState.LAND;
+        if (state == RotorState.READY)
+            state = RotorState.DISARMING;
     }
 }
